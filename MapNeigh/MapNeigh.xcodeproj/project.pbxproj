@@ -80,15 +80,47 @@
 		F5161E54203C9E4C00C9A84B /* MapNeigh */ = {
 			isa = PBXGroup;
 			children = (
-				F5161E55203C9E4C00C9A84B /* AppDelegate.swift */,
-				F5161E57203C9E4C00C9A84B /* ViewController.swift */,
-				F5161E59203C9E4C00C9A84B /* Main.storyboard */,
+				F5161E6C203CAE1400C9A84B /* Model */,
+				F5161E6B203CAE0B00C9A84B /* Controller */,
+				F5161E6A203CAE0000C9A84B /* View */,
 				F5161E5F203C9E4C00C9A84B /* Assets.xcassets */,
+				F5161E6D203CAE2200C9A84B /* Extra */,
+			);
+			path = MapNeigh;
+			sourceTree = "<group>";
+		};
+		F5161E6A203CAE0000C9A84B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F5161E59203C9E4C00C9A84B /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F5161E6B203CAE0B00C9A84B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F5161E57203C9E4C00C9A84B /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F5161E6C203CAE1400C9A84B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F5161E6D203CAE2200C9A84B /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				F5161E55203C9E4C00C9A84B /* AppDelegate.swift */,
 				F5161E61203C9E4C00C9A84B /* LaunchScreen.storyboard */,
 				F5161E64203C9E4C00C9A84B /* Info.plist */,
 				F5161E5C203C9E4C00C9A84B /* MapNeigh.xcdatamodeld */,
 			);
-			path = MapNeigh;
+			path = Extra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
