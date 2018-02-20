@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83E1D1A0620BB9387741C89C /* Pods_MapNeigh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43E523BA62DBDE09CDCA04 /* Pods_MapNeigh.framework */; };
 		F5161E56203C9E4C00C9A84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5161E55203C9E4C00C9A84B /* AppDelegate.swift */; };
 		F5161E58203C9E4C00C9A84B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5161E57203C9E4C00C9A84B /* ViewController.swift */; };
 		F5161E5B203C9E4C00C9A84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5161E59203C9E4C00C9A84B /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BD3F34C286822C4EABD5560 /* Pods-MapNeigh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapNeigh.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapNeigh/Pods-MapNeigh.release.xcconfig"; sourceTree = "<group>"; };
+		88E3CEAC6D4A6B1EEF9BD04A /* Pods-MapNeigh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapNeigh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapNeigh/Pods-MapNeigh.debug.xcconfig"; sourceTree = "<group>"; };
+		BE43E523BA62DBDE09CDCA04 /* Pods_MapNeigh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapNeigh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5161E52203C9E4C00C9A84B /* MapNeigh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapNeigh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5161E55203C9E4C00C9A84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5161E57203C9E4C00C9A84B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E1D1A0620BB9387741C89C /* Pods_MapNeigh.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AD455481014CC4D92821D25 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88E3CEAC6D4A6B1EEF9BD04A /* Pods-MapNeigh.debug.xcconfig */,
+				5BD3F34C286822C4EABD5560 /* Pods-MapNeigh.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		73A8FD29A86EC80772785F99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE43E523BA62DBDE09CDCA04 /* Pods_MapNeigh.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F5161E49203C9E4C00C9A84B = {
 			isa = PBXGroup;
 			children = (
 				F5161E54203C9E4C00C9A84B /* MapNeigh */,
 				F5161E53203C9E4C00C9A84B /* Products */,
+				2AD455481014CC4D92821D25 /* Pods */,
+				73A8FD29A86EC80772785F99 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5161E67203C9E4C00C9A84B /* Build configuration list for PBXNativeTarget "MapNeigh" */;
 			buildPhases = (
+				F09C23E5E5BEFFD8F658205D /* [CP] Check Pods Manifest.lock */,
 				F5161E4E203C9E4C00C9A84B /* Sources */,
 				F5161E4F203C9E4C00C9A84B /* Frameworks */,
 				F5161E50203C9E4C00C9A84B /* Resources */,
+				F9F274C7B5602FF35724B0ED /* [CP] Embed Pods Frameworks */,
+				05E42185D1E39B6D507F79B3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +160,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05E42185D1E39B6D507F79B3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MapNeigh/Pods-MapNeigh-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F09C23E5E5BEFFD8F658205D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MapNeigh-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9F274C7B5602FF35724B0ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MapNeigh/Pods-MapNeigh-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F5161E4E203C9E4C00C9A84B /* Sources */ = {
@@ -276,31 +354,35 @@
 		};
 		F5161E68203C9E4C00C9A84B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88E3CEAC6D4A6B1EEF9BD04A /* Pods-MapNeigh.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7658FGUAHR;
 				INFOPLIST_FILE = MapNeigh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rodrigossal.MapNeigh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		F5161E69203C9E4C00C9A84B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BD3F34C286822C4EABD5560 /* Pods-MapNeigh.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7658FGUAHR;
 				INFOPLIST_FILE = MapNeigh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rodrigossal.MapNeigh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

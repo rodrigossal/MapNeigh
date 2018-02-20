@@ -1,0 +1,6 @@
+framework module Pods_MapNeigh {
+  umbrella header "Pods-MapNeigh-umbrella.h"
+
+  export *
+  module * { export * }
+}
