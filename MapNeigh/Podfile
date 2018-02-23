@@ -7,7 +7,7 @@ target 'MapNeigh' do
   
     # Pods for MapNeigh
   pod 'SwifterSwift'            # All Extensions
-  
+  pod 'CameraManager', '~> 4.0'
 
 
 end

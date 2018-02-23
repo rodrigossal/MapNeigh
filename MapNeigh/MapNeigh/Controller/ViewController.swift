@@ -9,31 +9,168 @@
 import UIKit
 import MapKit
 import SwifterSwift
-import UIKit.UIGestureRecognizerSubclass
+import CameraManager
+
+
+enum State {
+    case closed
+    case open
+    
+    var opposite: State {
+        return self == .open ? .closed : .open
+    }
+}
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     
     let locationManager = CLLocationManager()
     
-    @IBOutlet weak var map: MKMapView!
-    
     var activeLocation: CLLocation?
+    
+    let cameraManager = CameraManager()
+    
+    @IBOutlet weak var map: MKMapView!
+
+    @IBOutlet weak var cameraPreview: UIView!
+    
+    @IBOutlet weak var swipeCamera: NSLayoutConstraint!
+    
+    @IBOutlet weak var cameraView: UIView!
+    
+    @IBOutlet weak var puxeView: UIView!
+    
+    var viewOffset: CGFloat = 265
+    
+    
+    //Array with all animators for the view
+    var runningAnimators: [UIViewPropertyAnimator] = []
+    
+    //Current state of comments view
+    var state: State = .closed
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMap()
+        setupCamera()
+        setupViews()
+        
+    }
+    func setupViews() {
+        swipeCamera.constant = 0
+        
+        //pan gesture is responsible for dragging
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.onDrag(_:)))
+        //self.puxeView.addGestureRecognizer(panGesture)
+        self.cameraView.addGestureRecognizer(panGesture)
+        
+        //create tap gesture recognizer and add to view
+        //view will open and close on tap
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
+        self.puxeView.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    func setupMap(){
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1000
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-
+        
         let  uilgr = UILongPressGestureRecognizer(target: self, action: #selector(self.addLocationWithLongPress(_:)))
-        
-        
-        
         map.addGestureRecognizer(uilgr)
     }
+    
+    func setupCamera(){
+        cameraManager.addPreviewLayerToView(self.cameraPreview)
+        cameraManager.cameraDevice = .front
+        cameraManager.shouldEnableTapToFocus = false
+        cameraManager.shouldEnablePinchToZoom = false
+        cameraManager.showAccessPermissionPopupAutomatically = true
+        self.cameraPreview.layer.cornerRadius = 60
+        
+    }
 
+    func animateIfNeeded(to state: State, duration: TimeInterval) {
+        
+        //if there is animators running, ignore
+        guard runningAnimators.isEmpty else { return }
+        
+        setupCamera()
+        
+        //Creates a basic animator to take care of the states of the view
+        let basicAnimator = UIViewPropertyAnimator(duration: duration, curve: .easeOut, animations: nil)
+        
+        //Add animations to the animator
+        //Related to view position, corner radius and icon alpha
+        //Just use the desired value for each state (closed or open)
+        basicAnimator.addAnimations {
+            switch state {
+            case .open:
+                self.swipeCamera.constant = self.viewOffset
+                self.cameraView.layer.cornerRadius = 60
+            case .closed:
+                self.swipeCamera.constant = 0
+                self.cameraView.layer.cornerRadius = 0
+            }
+            self.view.layoutIfNeeded()
+        }
+        basicAnimator.addAnimations{
+            switch state{
+            case .open:
+                self.puxeView.alpha = 0
+                self.puxeView.layer.cornerRadius = 60
+            case .closed:
+                self.puxeView.alpha = 1
+                self.puxeView.layer.cornerRadius = 0
+            }
+        }
+        
+        
+        basicAnimator.addCompletion { position in
+            self.runningAnimators.removeAll()
+            self.state = self.state.opposite //change the current state to the opposite
+        }
+        
+        
+        runningAnimators.append(basicAnimator)
+        
+    }
+    
+    
+    @objc func onDrag(_ gesture: UIPanGestureRecognizer) {
+        
+        switch gesture.state {
+        case .began:
+            //create animations to desired state
+            animateIfNeeded(to: state.opposite, duration: 0.4)
+        case .changed:
+            //calculates the percent of completion and sets it to all running animators
+            let translation = gesture.translation(in: cameraView)
+            let fraction = abs(translation.y / viewOffset)
+            
+            runningAnimators.forEach { animator in
+                animator.fractionComplete = fraction
+            }
+        case .ended:
+            //finish running animations to desired state
+            runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
+        default:
+            break
+        }
+        
+    }
+    
+    @objc func onTap(_ gesture: UITapGestureRecognizer) {
+        
+        //create animations and
+        animateIfNeeded(to: state.opposite, duration: 0.4)
+        runningAnimators.forEach { $0.startAnimation() }
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -64,7 +201,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         activeLocation = locations[locations.count - 1]
-        let region = MKCoordinateRegionMakeWithDistance((activeLocation?.coordinate)!, 200000, 200000)
+        let region = MKCoordinateRegionMakeWithDistance((activeLocation?.coordinate)!, 20000, 20000)
         map.setRegion(region, animated: true)
     }
     
@@ -72,6 +209,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Deu Ruim")
     }
+    
+    
+    
     
     
 }

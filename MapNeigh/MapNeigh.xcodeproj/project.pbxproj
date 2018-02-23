@@ -17,6 +17,8 @@
 		F5161E6F203DE89100C9A84B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5161E6E203DE89100C9A84B /* CoreLocation.framework */; };
 		F5161E71203DE89900C9A84B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5161E70203DE89900C9A84B /* MapKit.framework */; };
 		F5A9B50C203F3E73003B1A25 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5A9B50B203F3E72003B1A25 /* Info.plist */; };
+		F5F1205A2040B863001CD1B1 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F5F120592040B863001CD1B1 /* CNNEmotions.mlmodel */; };
+		F5F1205C2040B889001CD1B1 /* Sentimentos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1205B2040B889001CD1B1 /* Sentimentos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		F5161E6E203DE89100C9A84B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F5161E70203DE89900C9A84B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F5A9B50B203F3E72003B1A25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MapNeigh/Info.plist; sourceTree = "<group>"; };
+		F5F120592040B863001CD1B1 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = CNNEmotions.mlmodel; path = ../../../../../../../Downloads/CNNEmotions.mlmodel; sourceTree = "<group>"; };
+		F5F1205B2040B889001CD1B1 /* Sentimentos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentimentos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 		F5161E6C203CAE1400C9A84B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F5F1205B2040B889001CD1B1 /* Sentimentos.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 		F5161E6D203CAE2200C9A84B /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				F5F120592040B863001CD1B1 /* CNNEmotions.mlmodel */,
 				F5161E55203C9E4C00C9A84B /* AppDelegate.swift */,
 				F5161E61203C9E4C00C9A84B /* LaunchScreen.storyboard */,
 				F5161E5C203C9E4C00C9A84B /* MapNeigh.xcdatamodeld */,
@@ -244,10 +250,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MapNeigh/Pods-MapNeigh-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CameraManager/CameraManager.framework",
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CameraManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5F1205A2040B863001CD1B1 /* CNNEmotions.mlmodel in Sources */,
+				F5F1205C2040B889001CD1B1 /* Sentimentos.swift in Sources */,
 				F5161E5E203C9E4C00C9A84B /* MapNeigh.xcdatamodeld in Sources */,
 				F5161E58203C9E4C00C9A84B /* ViewController.swift in Sources */,
 				F5161E56203C9E4C00C9A84B /* AppDelegate.swift in Sources */,

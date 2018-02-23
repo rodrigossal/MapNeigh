@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iko-Qe-Mfn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Nl4-eH-cNg">
+            <objects>
+                <navigationController id="Iko-Qe-Mfn" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e13-tu-dRZ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mNo-QV-pqv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zVU-Wo-0Hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-988" y="138"/>
+        </scene>
+        <!--EmoShare-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MapNeigh" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,29 +34,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zMs-Lv-YVc">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="yc7-Ui-5cH"/>
                                 </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgc-BB-cfb">
+                                <rect key="frame" x="0.0" y="317" width="375" height="350"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFw-UC-fiA">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="280" id="47C-38-BKW"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3y3-CL-gN3">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="85" id="wFP-XQ-Aw4"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTb-K3-nhT">
+                                        <rect key="frame" x="0.0" y="288" width="375" height="62"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="3y3-CL-gN3" firstAttribute="top" secondItem="jgc-BB-cfb" secondAttribute="top" id="6p5-ss-VkA"/>
+                                    <constraint firstItem="3y3-CL-gN3" firstAttribute="leading" secondItem="jgc-BB-cfb" secondAttribute="leading" id="Cbl-Pa-JIU"/>
+                                    <constraint firstItem="ZTb-K3-nhT" firstAttribute="leading" secondItem="jgc-BB-cfb" secondAttribute="leading" id="N3Y-zA-Q7b"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZTb-K3-nhT" secondAttribute="bottom" id="Okp-Dp-ou8"/>
+                                    <constraint firstItem="LFw-UC-fiA" firstAttribute="top" secondItem="jgc-BB-cfb" secondAttribute="top" id="Ow4-sd-M6u"/>
+                                    <constraint firstAttribute="trailing" secondItem="LFw-UC-fiA" secondAttribute="trailing" id="Ycr-Ji-zNj"/>
+                                    <constraint firstAttribute="bottom" secondItem="LFw-UC-fiA" secondAttribute="bottom" constant="70" id="Yig-C7-a8M"/>
+                                    <constraint firstItem="ZTb-K3-nhT" firstAttribute="top" secondItem="LFw-UC-fiA" secondAttribute="bottom" constant="8" id="ZtM-a8-T4i"/>
+                                    <constraint firstAttribute="trailing" secondItem="3y3-CL-gN3" secondAttribute="trailing" id="ina-ID-JrT"/>
+                                    <constraint firstItem="LFw-UC-fiA" firstAttribute="leading" secondItem="jgc-BB-cfb" secondAttribute="leading" id="iwe-To-NxI"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZTb-K3-nhT" secondAttribute="trailing" id="lZj-o8-bFK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zMs-Lv-YVc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0As-P4-69C"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zMs-Lv-YVc" secondAttribute="bottom" id="Ap2-Gb-tPf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zMs-Lv-YVc" secondAttribute="trailing" id="Eme-cc-YYG"/>
-                            <constraint firstItem="zMs-Lv-YVc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ufe-Nz-DZW"/>
-                            <constraint firstItem="zMs-Lv-YVc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gL5-2N-Zl4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zMs-Lv-YVc" secondAttribute="bottom" id="sfy-FB-p6P"/>
+                            <constraint firstItem="zMs-Lv-YVc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DoT-5w-OH4"/>
+                            <constraint firstItem="zMs-Lv-YVc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O5w-JT-gZW"/>
+                            <constraint firstItem="zMs-Lv-YVc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ORm-7Q-F6g"/>
+                            <constraint firstItem="jgc-BB-cfb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RVl-0G-k27"/>
+                            <constraint firstItem="jgc-BB-cfb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="S68-2H-xVY"/>
+                            <constraint firstItem="zMs-Lv-YVc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="WMm-9v-wam"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3y3-CL-gN3" secondAttribute="bottom" constant="265" id="ybe-6c-ohE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="EmoShare" id="kvc-WS-eji"/>
                     <connections>
+                        <outlet property="cameraPreview" destination="LFw-UC-fiA" id="y4J-Th-2cG"/>
+                        <outlet property="cameraView" destination="jgc-BB-cfb" id="ODv-ui-FaF"/>
                         <outlet property="map" destination="zMs-Lv-YVc" id="3Ww-Sb-ZU4"/>
+                        <outlet property="puxeView" destination="3y3-CL-gN3" id="Q1d-LT-ewu"/>
+                        <outlet property="swipeCamera" destination="ybe-6c-ohE" id="ySM-nh-1JM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="98.50074962518741"/>
         </scene>
     </scenes>
 </document>

@@ -1,4 +1,5 @@
 PODS:
+  - CameraManager (4.0.1)
   - SwifterSwift (4.1.1):
     - SwifterSwift/AppKit (= 4.1.1)
     - SwifterSwift/CoreGraphics (= 4.1.1)
@@ -14,11 +15,13 @@ PODS:
   - SwifterSwift/UIKit (4.1.1)
 
 DEPENDENCIES:
+  - CameraManager (~> 4.0)
   - SwifterSwift
 
 SPEC CHECKSUMS:
+  CameraManager: 56b3516e8e22cfbf56f3f0401291561e1ad9b3d0
   SwifterSwift: bfcae9d659dfd306d164f13f72cad09198f30723
 
-PODFILE CHECKSUM: efb6919316fd229bf5872f955ce4d2637c518288
+PODFILE CHECKSUM: d1604ec2d2e6c7e5b50619d0dec81cfe97e6e803
 
 COCOAPODS: 1.4.0
