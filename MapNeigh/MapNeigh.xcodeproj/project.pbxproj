@@ -14,6 +14,9 @@
 		F5161E5E203C9E4C00C9A84B /* MapNeigh.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5161E5C203C9E4C00C9A84B /* MapNeigh.xcdatamodeld */; };
 		F5161E60203C9E4C00C9A84B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5161E5F203C9E4C00C9A84B /* Assets.xcassets */; };
 		F5161E63203C9E4C00C9A84B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5161E61203C9E4C00C9A84B /* LaunchScreen.storyboard */; };
+		F5161E6F203DE89100C9A84B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5161E6E203DE89100C9A84B /* CoreLocation.framework */; };
+		F5161E71203DE89900C9A84B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5161E70203DE89900C9A84B /* MapKit.framework */; };
+		F5A9B50C203F3E73003B1A25 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5A9B50B203F3E72003B1A25 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +30,9 @@
 		F5161E5D203C9E4C00C9A84B /* MapNeigh.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MapNeigh.xcdatamodel; sourceTree = "<group>"; };
 		F5161E5F203C9E4C00C9A84B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5161E62203C9E4C00C9A84B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F5161E64203C9E4C00C9A84B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5161E6E203DE89100C9A84B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F5161E70203DE89900C9A84B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F5A9B50B203F3E72003B1A25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MapNeigh/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5161E71203DE89900C9A84B /* MapKit.framework in Frameworks */,
+				F5161E6F203DE89100C9A84B /* CoreLocation.framework in Frameworks */,
 				83E1D1A0620BB9387741C89C /* Pods_MapNeigh.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +61,8 @@
 		73A8FD29A86EC80772785F99 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5161E70203DE89900C9A84B /* MapKit.framework */,
+				F5161E6E203DE89100C9A84B /* CoreLocation.framework */,
 				BE43E523BA62DBDE09CDCA04 /* Pods_MapNeigh.framework */,
 			);
 			name = Frameworks;
@@ -63,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				F5161E54203C9E4C00C9A84B /* MapNeigh */,
+				F5A9B50B203F3E72003B1A25 /* Info.plist */,
 				F5161E53203C9E4C00C9A84B /* Products */,
 				2AD455481014CC4D92821D25 /* Pods */,
 				73A8FD29A86EC80772785F99 /* Frameworks */,
@@ -117,7 +127,6 @@
 			children = (
 				F5161E55203C9E4C00C9A84B /* AppDelegate.swift */,
 				F5161E61203C9E4C00C9A84B /* LaunchScreen.storyboard */,
-				F5161E64203C9E4C00C9A84B /* Info.plist */,
 				F5161E5C203C9E4C00C9A84B /* MapNeigh.xcdatamodeld */,
 			);
 			path = Extra;
@@ -185,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5A9B50C203F3E73003B1A25 /* Info.plist in Resources */,
 				F5161E63203C9E4C00C9A84B /* LaunchScreen.storyboard in Resources */,
 				F5161E60203C9E4C00C9A84B /* Assets.xcassets in Resources */,
 				F5161E5B203C9E4C00C9A84B /* Main.storyboard in Resources */,
@@ -233,9 +243,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MapNeigh/Pods-MapNeigh-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

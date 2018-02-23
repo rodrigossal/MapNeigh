@@ -1,3 +1,24 @@
-PODFILE CHECKSUM: 4208fc4f84996e387c327d804c366bfeaa3247e1
+PODS:
+  - SwifterSwift (4.1.1):
+    - SwifterSwift/AppKit (= 4.1.1)
+    - SwifterSwift/CoreGraphics (= 4.1.1)
+    - SwifterSwift/CoreLocation (= 4.1.1)
+    - SwifterSwift/Foundation (= 4.1.1)
+    - SwifterSwift/SwiftStdlib (= 4.1.1)
+    - SwifterSwift/UIKit (= 4.1.1)
+  - SwifterSwift/AppKit (4.1.1)
+  - SwifterSwift/CoreGraphics (4.1.1)
+  - SwifterSwift/CoreLocation (4.1.1)
+  - SwifterSwift/Foundation (4.1.1)
+  - SwifterSwift/SwiftStdlib (4.1.1)
+  - SwifterSwift/UIKit (4.1.1)
+
+DEPENDENCIES:
+  - SwifterSwift
+
+SPEC CHECKSUMS:
+  SwifterSwift: bfcae9d659dfd306d164f13f72cad09198f30723
+
+PODFILE CHECKSUM: efb6919316fd229bf5872f955ce4d2637c518288
 
 COCOAPODS: 1.4.0
