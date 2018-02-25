@@ -40,8 +40,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var puxeView: UIView!
     
-    var viewOffset: CGFloat = 265
+    @IBOutlet weak var resultButton: UIButton!
     
+    var viewOffset: CGFloat = 265
+    var timer = Timer()
+    let sentimentos = Sentimentos()
+//    var myImage = UIImage()
     
     //Array with all animators for the view
     var runningAnimators: [UIViewPropertyAnimator] = []
@@ -57,6 +61,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         setupViews()
         
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        locationManager.requestLocation()
+        map.showsUserLocation = true
+        setupPic()
+    }
+    
     func setupViews() {
         swipeCamera.constant = 0
         
@@ -69,6 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         //view will open and close on tap
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
         self.puxeView.addGestureRecognizer(tapGesture)
+        self.resultButton.addGestureRecognizer(tapGesture)
         
     }
     
@@ -88,10 +105,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         cameraManager.shouldEnableTapToFocus = false
         cameraManager.shouldEnablePinchToZoom = false
         cameraManager.showAccessPermissionPopupAutomatically = true
+        cameraManager.animateShutter = false
         self.cameraPreview.layer.cornerRadius = 60
         
     }
+    
+    func setupPic(){
+        //takePicture()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(self.takePicture)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func takePicture(){
+        var myImage : UIImage!
+        cameraManager.capturePictureWithCompletion({ (image, error) -> Void in
+            myImage = image!
+            if myImage != nil {
+                print("entrou")
+                let myImagePB = myImage.pixelBuffer(width: Int(myImage.size.width), height: Int(myImage.size.height))
+                    if myImagePB != nil {
+                        let resultado = self.sentimentos.test(imagem: myImagePB!)
+                }
+            }
+        })
+        
+    }
 
+    
     func animateIfNeeded(to state: State, duration: TimeInterval) {
         
         //if there is animators running, ignore
@@ -169,18 +208,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         runningAnimators.forEach { $0.startAnimation() }
         
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    
-    override func viewWillAppear(_ animated: Bool) {
-        locationManager.requestLocation()
-        map.showsUserLocation = true
-    }
-    
     @objc func addLocationWithLongPress(_ recognier: UIGestureRecognizer){
         
         if recognier.state == .began{
@@ -201,14 +228,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         activeLocation = locations[locations.count - 1]
-        let region = MKCoordinateRegionMakeWithDistance((activeLocation?.coordinate)!, 20000, 20000)
+        let region = MKCoordinateRegionMakeWithDistance((activeLocation?.coordinate)!, 2000, 2000)
         map.setRegion(region, animated: true)
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Deu Ruim")
     }
+    
+
+    
+
+    
+    
+
     
     
     

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Para ver suas emoções, o app nao salvará nem compartilhará sua foto</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Para ver suas emoções, o app nao salvará nem compartilhará sua foto</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

@@ -58,7 +58,20 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTb-K3-nhT">
                                         <rect key="frame" x="0.0" y="288" width="375" height="62"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ec-cUi">
+                                                <rect key="frame" x="156.5" y="12" width="61" height="38"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" red="0.14115631579999999" green="0.1411880553" blue="0.1411542892" alpha="1" colorSpace="deviceRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="wHf-Ec-cUi" firstAttribute="centerY" secondItem="ZTb-K3-nhT" secondAttribute="centerY" id="oMF-hJ-Hhk"/>
+                                            <constraint firstItem="wHf-Ec-cUi" firstAttribute="centerX" secondItem="ZTb-K3-nhT" secondAttribute="centerX" id="uQ9-VM-DfZ"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -95,6 +108,7 @@
                         <outlet property="cameraView" destination="jgc-BB-cfb" id="ODv-ui-FaF"/>
                         <outlet property="map" destination="zMs-Lv-YVc" id="3Ww-Sb-ZU4"/>
                         <outlet property="puxeView" destination="3y3-CL-gN3" id="Q1d-LT-ewu"/>
+                        <outlet property="resultButton" destination="wHf-Ec-cUi" id="aXq-yv-bOO"/>
                         <outlet property="swipeCamera" destination="ybe-6c-ohE" id="ySM-nh-1JM"/>
                     </connections>
                 </viewController>
