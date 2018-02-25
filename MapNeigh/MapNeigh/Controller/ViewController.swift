@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreML
+import Vision
 import MapKit
 import SwifterSwift
 import CameraManager
@@ -24,6 +26,7 @@ enum State {
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     
+    @IBOutlet weak var face: UIImageView!
     let locationManager = CLLocationManager()
     
     var activeLocation: CLLocation?
@@ -39,13 +42,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var cameraView: UIView!
     
     @IBOutlet weak var puxeView: UIView!
-    
-    @IBOutlet weak var resultButton: UIButton!
+
+    @IBOutlet weak var resultLabel: UILabel!
     
     var viewOffset: CGFloat = 265
     var timer = Timer()
-    let sentimentos = Sentimentos()
-//    var myImage = UIImage()
+    let vowels: [Character] = ["a", "e", "i", "o", "u"]
     
     //Array with all animators for the view
     var runningAnimators: [UIViewPropertyAnimator] = []
@@ -59,6 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         setupMap()
         setupCamera()
         setupViews()
+        Resources.init()
         
     }
     
@@ -71,6 +74,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestLocation()
         map.showsUserLocation = true
         setupPic()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
     }
     
     func setupViews() {
@@ -85,7 +90,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         //view will open and close on tap
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
         self.puxeView.addGestureRecognizer(tapGesture)
-        self.resultButton.addGestureRecognizer(tapGesture)
+        self.resultLabel.addGestureRecognizer(tapGesture)
         
     }
     
@@ -106,26 +111,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         cameraManager.shouldEnablePinchToZoom = false
         cameraManager.showAccessPermissionPopupAutomatically = true
         cameraManager.animateShutter = false
-        self.cameraPreview.layer.cornerRadius = 60
+        cameraManager.writeFilesToPhoneLibrary = false
+        
+        self.cameraPreview.layer.cornerRadius = 100
         
     }
     
     func setupPic(){
         //takePicture()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(self.takePicture)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: (#selector(self.takePicture)), userInfo: nil, repeats: true)
     }
     
     @objc func takePicture(){
         var myImage : UIImage!
         cameraManager.capturePictureWithCompletion({ (image, error) -> Void in
-            myImage = image!
-            if myImage != nil {
-                print("entrou")
-                let myImagePB = myImage.pixelBuffer(width: Int(myImage.size.width), height: Int(myImage.size.height))
-                    if myImagePB != nil {
-                        let resultado = self.sentimentos.test(imagem: myImagePB!)
+            myImage = image
+                
+            
+            if myImage != nil{
+                guard let ciImage = CIImage(image: myImage) else {
+                    fatalError("couldn't convert UIImage to CIImage")
                 }
+                
+                self.detectScene(image: ciImage)
+            } else{
+                self.takePicture()
             }
+            
         })
         
     }
@@ -238,9 +250,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
 
     
+    
+    
+    func detectScene(image: CIImage) {
+        resultLabel.text = "detecting scene..."
+        
+        // Load the ML model through its generated class
+        guard let model = try? VNCoreMLModel(for: CNNEmotions().model) else {
+            fatalError("can't load Places ML model")
+        }
+        // Create a Vision request with completion handler
+        let request = VNCoreMLRequest(model: model) { [weak self] request, error in
+            guard let results = request.results as? [VNClassificationObservation],
+                let topResult = results.first else {
+                    fatalError("unexpected result type from VNCoreMLRequest")
+            }
+            
+            // Update UI on main queue
+            let article = (self?.vowels.contains(topResult.identifier.first!))! ? "an" : "a"
+            DispatchQueue.main.async { [weak self] in
+                self?.resultLabel.text = "\(Int(topResult.confidence * 100))% it's \(article) \(topResult.identifier)"
+            }
+        }
+        
+        // Run the Core ML GoogLeNetPlaces classifier on global dispatch queue
+        let handler = VNImageRequestHandler(ciImage: image)
+        DispatchQueue.global(qos: .userInteractive).async {
+            do {
+                try handler.perform([request])
+            } catch {
+                print(error)
+            }
+        }
+        
+        
+        
+    }
 
     
-    
+
 
     
     

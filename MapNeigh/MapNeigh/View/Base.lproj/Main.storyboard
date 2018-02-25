@@ -43,10 +43,19 @@
                                 <rect key="frame" x="0.0" y="317" width="375" height="350"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFw-UC-fiA">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                        <rect key="frame" x="70" y="0.0" width="235" height="280"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kvi-0K-jUb">
+                                                <rect key="frame" x="0.0" y="0.0" width="235" height="280"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Kvi-0K-jUb" secondAttribute="trailing" id="0kL-gj-6YX"/>
                                             <constraint firstAttribute="height" constant="280" id="47C-38-BKW"/>
+                                            <constraint firstAttribute="bottom" secondItem="Kvi-0K-jUb" secondAttribute="bottom" id="60L-mb-NNB"/>
+                                            <constraint firstItem="Kvi-0K-jUb" firstAttribute="leading" secondItem="LFw-UC-fiA" secondAttribute="leading" id="DiI-j6-e7t"/>
+                                            <constraint firstItem="Kvi-0K-jUb" firstAttribute="top" secondItem="LFw-UC-fiA" secondAttribute="top" id="Nwi-R7-Efo"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3y3-CL-gN3">
@@ -59,18 +68,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTb-K3-nhT">
                                         <rect key="frame" x="0.0" y="288" width="375" height="62"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ec-cUi">
-                                                <rect key="frame" x="156.5" y="12" width="61" height="38"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleColor" red="0.14115631579999999" green="0.1411880553" blue="0.1411542892" alpha="1" colorSpace="deviceRGB"/>
-                                                </state>
-                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uF-Pc-a17">
+                                                <rect key="frame" x="187.5" y="31" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="wHf-Ec-cUi" firstAttribute="centerY" secondItem="ZTb-K3-nhT" secondAttribute="centerY" id="oMF-hJ-Hhk"/>
-                                            <constraint firstItem="wHf-Ec-cUi" firstAttribute="centerX" secondItem="ZTb-K3-nhT" secondAttribute="centerX" id="uQ9-VM-DfZ"/>
+                                            <constraint firstItem="1uF-Pc-a17" firstAttribute="centerX" secondItem="ZTb-K3-nhT" secondAttribute="centerX" id="IHg-HE-9UJ"/>
+                                            <constraint firstItem="1uF-Pc-a17" firstAttribute="centerY" secondItem="ZTb-K3-nhT" secondAttribute="centerY" id="uoV-VT-POL"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -81,11 +89,11 @@
                                     <constraint firstItem="ZTb-K3-nhT" firstAttribute="leading" secondItem="jgc-BB-cfb" secondAttribute="leading" id="N3Y-zA-Q7b"/>
                                     <constraint firstAttribute="bottom" secondItem="ZTb-K3-nhT" secondAttribute="bottom" id="Okp-Dp-ou8"/>
                                     <constraint firstItem="LFw-UC-fiA" firstAttribute="top" secondItem="jgc-BB-cfb" secondAttribute="top" id="Ow4-sd-M6u"/>
-                                    <constraint firstAttribute="trailing" secondItem="LFw-UC-fiA" secondAttribute="trailing" id="Ycr-Ji-zNj"/>
+                                    <constraint firstAttribute="trailing" secondItem="LFw-UC-fiA" secondAttribute="trailing" constant="70" id="Ycr-Ji-zNj"/>
                                     <constraint firstAttribute="bottom" secondItem="LFw-UC-fiA" secondAttribute="bottom" constant="70" id="Yig-C7-a8M"/>
                                     <constraint firstItem="ZTb-K3-nhT" firstAttribute="top" secondItem="LFw-UC-fiA" secondAttribute="bottom" constant="8" id="ZtM-a8-T4i"/>
                                     <constraint firstAttribute="trailing" secondItem="3y3-CL-gN3" secondAttribute="trailing" id="ina-ID-JrT"/>
-                                    <constraint firstItem="LFw-UC-fiA" firstAttribute="leading" secondItem="jgc-BB-cfb" secondAttribute="leading" id="iwe-To-NxI"/>
+                                    <constraint firstItem="LFw-UC-fiA" firstAttribute="leading" secondItem="jgc-BB-cfb" secondAttribute="leading" constant="70" id="iwe-To-NxI"/>
                                     <constraint firstAttribute="trailing" secondItem="ZTb-K3-nhT" secondAttribute="trailing" id="lZj-o8-bFK"/>
                                 </constraints>
                             </view>
@@ -106,9 +114,10 @@
                     <connections>
                         <outlet property="cameraPreview" destination="LFw-UC-fiA" id="y4J-Th-2cG"/>
                         <outlet property="cameraView" destination="jgc-BB-cfb" id="ODv-ui-FaF"/>
+                        <outlet property="face" destination="Kvi-0K-jUb" id="iqH-OS-Txd"/>
                         <outlet property="map" destination="zMs-Lv-YVc" id="3Ww-Sb-ZU4"/>
                         <outlet property="puxeView" destination="3y3-CL-gN3" id="Q1d-LT-ewu"/>
-                        <outlet property="resultButton" destination="wHf-Ec-cUi" id="aXq-yv-bOO"/>
+                        <outlet property="resultLabel" destination="1uF-Pc-a17" id="mJu-zS-Qma"/>
                         <outlet property="swipeCamera" destination="ybe-6c-ohE" id="ySM-nh-1JM"/>
                     </connections>
                 </viewController>
@@ -117,4 +126,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="98.50074962518741"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="face" width="235" height="280"/>
+    </resources>
 </document>

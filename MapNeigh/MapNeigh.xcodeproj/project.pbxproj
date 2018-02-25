@@ -17,9 +17,8 @@
 		F5161E6F203DE89100C9A84B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5161E6E203DE89100C9A84B /* CoreLocation.framework */; };
 		F5161E71203DE89900C9A84B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5161E70203DE89900C9A84B /* MapKit.framework */; };
 		F5A9B50C203F3E73003B1A25 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5A9B50B203F3E72003B1A25 /* Info.plist */; };
-		F5E6097E2043016100B7845B /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E6097D2043016100B7845B /* UIImage+CVPixelBuffer.swift */; };
+		F5E60980204362A300B7845B /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E6097F204362A300B7845B /* Resources.swift */; };
 		F5F1205A2040B863001CD1B1 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F5F120592040B863001CD1B1 /* CNNEmotions.mlmodel */; };
-		F5F1205C2040B889001CD1B1 /* Sentimentos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1205B2040B889001CD1B1 /* Sentimentos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,9 +35,8 @@
 		F5161E6E203DE89100C9A84B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F5161E70203DE89900C9A84B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F5A9B50B203F3E72003B1A25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MapNeigh/Info.plist; sourceTree = "<group>"; };
-		F5E6097D2043016100B7845B /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		F5E6097F204362A300B7845B /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		F5F120592040B863001CD1B1 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = CNNEmotions.mlmodel; path = ../../../../../../../Downloads/CNNEmotions.mlmodel; sourceTree = "<group>"; };
-		F5F1205B2040B889001CD1B1 /* Sentimentos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentimentos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +97,7 @@
 				F5161E6C203CAE1400C9A84B /* Model */,
 				F5161E6B203CAE0B00C9A84B /* Controller */,
 				F5161E6A203CAE0000C9A84B /* View */,
+				F5E60981204362B500B7845B /* Resources */,
 				F5161E5F203C9E4C00C9A84B /* Assets.xcassets */,
 				F5161E6D203CAE2200C9A84B /* Extra */,
 			);
@@ -124,8 +123,6 @@
 		F5161E6C203CAE1400C9A84B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F5F1205B2040B889001CD1B1 /* Sentimentos.swift */,
-				F5E6097D2043016100B7845B /* UIImage+CVPixelBuffer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +136,14 @@
 				F5161E5C203C9E4C00C9A84B /* MapNeigh.xcdatamodeld */,
 			);
 			path = Extra;
+			sourceTree = "<group>";
+		};
+		F5E60981204362B500B7845B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F5E6097F204362A300B7845B /* Resources.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,10 +279,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F1205A2040B863001CD1B1 /* CNNEmotions.mlmodel in Sources */,
-				F5E6097E2043016100B7845B /* UIImage+CVPixelBuffer.swift in Sources */,
-				F5F1205C2040B889001CD1B1 /* Sentimentos.swift in Sources */,
 				F5161E5E203C9E4C00C9A84B /* MapNeigh.xcdatamodeld in Sources */,
 				F5161E58203C9E4C00C9A84B /* ViewController.swift in Sources */,
+				F5E60980204362A300B7845B /* Resources.swift in Sources */,
 				F5161E56203C9E4C00C9A84B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
