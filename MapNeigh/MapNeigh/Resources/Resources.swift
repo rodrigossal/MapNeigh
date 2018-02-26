@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreLocation
 
 class Resources{
     
@@ -16,7 +17,7 @@ class Resources{
     let defaults = UserDefaults.standard
     
     init() {
-        FirebaseApp.configure()
+        
         
         let everIniciated = UserDefaults.standard.integer(forKey: "everstarted")
         
@@ -29,7 +30,13 @@ class Resources{
     
     func savedItens(){
         print("entrou 1 vez")
-        defaults.set("none", forKey: "lastFeeling")
+        let feeling = [String]()
+        let posLa = [CLLocationDegrees]()
+        let posLo = [CLLocationDegrees]()
+        defaults.set(feeling, forKey: "feeling")
+        defaults.set(posLa, forKey: "posLa")
+        defaults.set(posLo, forKey: "posLo")
+        
         defaults.set(true, forKey: "everstarted")
         //UserDefaults.standard.set("Andgry", forKey: "lastFeeling")
     }

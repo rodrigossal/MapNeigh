@@ -3,6 +3,9 @@ PODS:
   - Firebase/Core (4.8.2):
     - FirebaseAnalytics (= 4.0.9)
     - FirebaseCore (= 4.0.14)
+  - Firebase/Database (4.8.2):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.1.4)
   - FirebaseAnalytics (4.0.9):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -10,11 +13,16 @@ PODS:
     - nanopb (~> 0.3)
   - FirebaseCore (4.0.14):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseDatabase (4.1.4):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.8):
     - FirebaseCore (~> 4.0)
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
+  - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -36,7 +44,7 @@ PODS:
 
 DEPENDENCIES:
   - CameraManager (~> 4.0)
-  - Firebase/Core
+  - Firebase/Database
   - SwifterSwift
 
 SPEC CHECKSUMS:
@@ -44,11 +52,13 @@ SPEC CHECKSUMS:
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
   FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
+  FirebaseDatabase: de4446507ccd3257fca37d16f40e1540324571fd
   FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SwifterSwift: bfcae9d659dfd306d164f13f72cad09198f30723
 
-PODFILE CHECKSUM: 2f56bc81afc2c42be02ff3ac060cf935ec369f00
+PODFILE CHECKSUM: 7a25d16a113e465a1a7c90d09126f8a3425972ef
 
 COCOAPODS: 1.4.0

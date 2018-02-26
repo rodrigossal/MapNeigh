@@ -14,6 +14,7 @@ import SwifterSwift
 import CameraManager
 import Firebase
 
+
 enum State {
     case closed
     case open
@@ -45,9 +46,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var resultLabel: UILabel!
     
+
     var viewOffset: CGFloat = 265
     var timer = Timer()
     let vowels: [Character] = ["a", "e", "i", "o", "u"]
+    
+    var ref : DatabaseReference!
     
     //Array with all animators for the view
     var runningAnimators: [UIViewPropertyAnimator] = []
@@ -62,6 +66,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         setupCamera()
         setupViews()
         Resources.init()
+        ref = Database.database().reference()
+        setupLoading()
+        setupPins()
         
     }
     
@@ -76,6 +83,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         setupPic()
     }
     override func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    func setupLoading(){
+        let alert = UIAlertController(title: nil, message: "Looking for you...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
     }
     
     func setupViews() {
@@ -99,9 +118,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.distanceFilter = 1000
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        
-        let  uilgr = UILongPressGestureRecognizer(target: self, action: #selector(self.addLocationWithLongPress(_:)))
-        map.addGestureRecognizer(uilgr)
+
     }
     
     func setupCamera(){
@@ -117,9 +134,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    func setupPins(){
+
+        var feeling = UserDefaults.standard.array(forKey: "feeling")
+        var posLa = UserDefaults.standard.array(forKey: "posLa")
+        var posLo = UserDefaults.standard.array(forKey: "posLo")
+        
+        var pin : CLLocation?
+        
+        if feeling!.count <= 0{
+            return
+        }
+        for i in 0...(feeling!.count)-1{
+            print(i)
+            pin = CLLocation.init(latitude: posLa![i] as! CLLocationDegrees, longitude: posLo![i] as! CLLocationDegrees)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = (pin?.coordinate)!
+            annotation.title = feeling![i] as? String
+            map.addAnnotation(annotation)
+        }
+        
+        
+    }
+    
     func setupPic(){
         //takePicture()
-        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: (#selector(self.takePicture)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(self.takePicture)), userInfo: nil, repeats: true)
     }
     
     @objc func takePicture(){
@@ -220,26 +260,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         runningAnimators.forEach { $0.startAnimation() }
         
     }
-    @objc func addLocationWithLongPress(_ recognier: UIGestureRecognizer){
-        
-        if recognier.state == .began{
-            let touchPoint = recognier.location(in: map)
-            let coordinates = map.convert(touchPoint, toCoordinateFrom: map)
-            let newLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinates
-            if let location = activeLocation{
-                let distance = location.distance(from: newLocation)
-                annotation.title = "Distância: \(String(format: "%.2f", distance/1000)) KM"
-            }
-            map.addAnnotation(annotation)
-        }
-        
-    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         activeLocation = locations[locations.count - 1]
+        dismiss(animated: false, completion: nil)
         let region = MKCoordinateRegionMakeWithDistance((activeLocation?.coordinate)!, 2000, 2000)
         map.setRegion(region, animated: true)
     }
@@ -253,7 +278,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func detectScene(image: CIImage) {
-        resultLabel.text = "detecting scene..."
         
         // Load the ML model through its generated class
         guard let model = try? VNCoreMLModel(for: CNNEmotions().model) else {
@@ -267,9 +291,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             // Update UI on main queue
-            let article = (self?.vowels.contains(topResult.identifier.first!))! ? "an" : "a"
             DispatchQueue.main.async { [weak self] in
-                self?.resultLabel.text = "\(Int(topResult.confidence * 100))% it's \(article) \(topResult.identifier)"
+                self?.resultLabel.text = "\(topResult.identifier)"
             }
         }
         
@@ -287,6 +310,44 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
 
+    @IBAction func buttonShare(_ sender: Any) {
+        
+        animateIfNeeded(to: state.opposite, duration: 0.4)
+        
+        let region = MKCoordinateRegionMakeWithDistance((activeLocation?.coordinate)!, 1000, 1000)
+        map.setRegion(region, animated: true)
+        
+        if activeLocation != nil{
+            let newLocation = activeLocation
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = (activeLocation?.coordinate)!
+            if let location = activeLocation{
+                let distance = location.distance(from: newLocation!)
+                annotation.title = resultLabel.text
+            }
+            map.addAnnotation(annotation)
+
+            var feeling = UserDefaults.standard.array(forKey: "feeling")
+            var posLa = UserDefaults.standard.array(forKey: "posLa")
+            var posLo = UserDefaults.standard.array(forKey: "posLo")
+            
+            feeling?.append(resultLabel.text)
+            posLa?.append(activeLocation?.coordinate.latitude)
+            posLo?.append(activeLocation?.coordinate.longitude)
+            
+            UserDefaults.standard.set(feeling, forKey: "feeling")
+            UserDefaults.standard.set(posLa, forKey: "posLa")
+            UserDefaults.standard.set(posLo, forKey: "posLo")
+            
+            
+        
+            self.ref.child("users").child("0").child("emotion").setValue(resultLabel.text)
+            self.ref.child("users").child("0").child("posLatitude").setValue(activeLocation?.coordinate.latitude)
+        self.ref.child("users").child("0").child("posLongitude").setValue(activeLocation?.coordinate.longitude )
+        }
+        
+        
+    }
     
 
 

@@ -17,6 +17,7 @@
 		F5161E6F203DE89100C9A84B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5161E6E203DE89100C9A84B /* CoreLocation.framework */; };
 		F5161E71203DE89900C9A84B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5161E70203DE89900C9A84B /* MapKit.framework */; };
 		F53A3BFD2043879B004D3418 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F53A3BFC2043879B004D3418 /* GoogleService-Info.plist */; };
+		F53A3BFF20438DCB004D3418 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A3BFE20438DCB004D3418 /* User.swift */; };
 		F5A9B50C203F3E73003B1A25 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5A9B50B203F3E72003B1A25 /* Info.plist */; };
 		F5E60980204362A300B7845B /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E6097F204362A300B7845B /* Resources.swift */; };
 		F5F1205A2040B863001CD1B1 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F5F120592040B863001CD1B1 /* CNNEmotions.mlmodel */; };
@@ -36,6 +37,7 @@
 		F5161E6E203DE89100C9A84B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F5161E70203DE89900C9A84B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F53A3BFC2043879B004D3418 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F53A3BFE20438DCB004D3418 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F5A9B50B203F3E72003B1A25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MapNeigh/Info.plist; sourceTree = "<group>"; };
 		F5E6097F204362A300B7845B /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		F5F120592040B863001CD1B1 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = CNNEmotions.mlmodel; path = ../../../../../../../Downloads/CNNEmotions.mlmodel; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		F5161E6C203CAE1400C9A84B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F53A3BFE20438DCB004D3418 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				"${BUILT_PRODUCTS_DIR}/CameraManager/CameraManager.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -272,6 +276,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CameraManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +293,7 @@
 			files = (
 				F5F1205A2040B863001CD1B1 /* CNNEmotions.mlmodel in Sources */,
 				F5161E5E203C9E4C00C9A84B /* MapNeigh.xcdatamodeld in Sources */,
+				F53A3BFF20438DCB004D3418 /* User.swift in Sources */,
 				F5161E58203C9E4C00C9A84B /* ViewController.swift in Sources */,
 				F5E60980204362A300B7845B /* Resources.swift in Sources */,
 				F5161E56203C9E4C00C9A84B /* AppDelegate.swift in Sources */,

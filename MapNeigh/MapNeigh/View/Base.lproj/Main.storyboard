@@ -84,11 +84,21 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNO-5z-nrg">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                                <connections>
+                                                    <action selector="buttonShare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G1w-Ov-8m8"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="CNO-5z-nrg" firstAttribute="top" secondItem="ZTb-K3-nhT" secondAttribute="top" id="9Nk-3Y-yqp"/>
                                             <constraint firstItem="1uF-Pc-a17" firstAttribute="centerX" secondItem="ZTb-K3-nhT" secondAttribute="centerX" id="IHg-HE-9UJ"/>
+                                            <constraint firstItem="CNO-5z-nrg" firstAttribute="leading" secondItem="ZTb-K3-nhT" secondAttribute="leading" id="VgV-23-Xng"/>
                                             <constraint firstItem="1uF-Pc-a17" firstAttribute="centerY" secondItem="ZTb-K3-nhT" secondAttribute="centerY" id="uoV-VT-POL"/>
+                                            <constraint firstAttribute="trailing" secondItem="CNO-5z-nrg" secondAttribute="trailing" id="vCw-pP-B7P"/>
+                                            <constraint firstAttribute="bottom" secondItem="CNO-5z-nrg" secondAttribute="bottom" id="wBh-gJ-YaL"/>
                                         </constraints>
                                     </view>
                                 </subviews>
