@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Resources{
     
@@ -15,6 +16,8 @@ class Resources{
     let defaults = UserDefaults.standard
     
     init() {
+        FirebaseApp.configure()
+        
         let everIniciated = UserDefaults.standard.integer(forKey: "everstarted")
         
         if everIniciated == 0{

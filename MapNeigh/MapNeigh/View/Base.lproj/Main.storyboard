@@ -60,8 +60,18 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3y3-CL-gN3">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND YOUR EMOTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHS-TO-Tbk">
+                                                <rect key="frame" x="72" y="29" width="232.5" height="27.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="fHS-TO-Tbk" firstAttribute="centerY" secondItem="3y3-CL-gN3" secondAttribute="centerY" id="ePR-7J-dfu"/>
+                                            <constraint firstItem="fHS-TO-Tbk" firstAttribute="centerX" secondItem="3y3-CL-gN3" secondAttribute="centerX" id="szb-gk-A3b"/>
                                             <constraint firstAttribute="height" constant="85" id="wFP-XQ-Aw4"/>
                                         </constraints>
                                     </view>

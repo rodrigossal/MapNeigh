@@ -12,7 +12,7 @@ import Vision
 import MapKit
 import SwifterSwift
 import CameraManager
-
+import Firebase
 
 enum State {
     case closed
@@ -90,7 +90,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         //view will open and close on tap
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
         self.puxeView.addGestureRecognizer(tapGesture)
-        self.resultLabel.addGestureRecognizer(tapGesture)
+        //self.resultLabel.addGestureRecognizer(tapGesture)
         
     }
     
